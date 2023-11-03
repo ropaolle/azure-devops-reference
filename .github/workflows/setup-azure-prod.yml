@@ -1,12 +1,5 @@
 name: Prod Azure Infrastructure
 
-# env:
-#   AZURE_CONTAINER_REGISTRY: RopaOlleRegistry
-#   PROJECT_NAME: devops # registry repository name
-#   REGISTRY_URL: ropaolleregistry.azurecr.io
-#   RESOURCE_GROUP: devops
-#   CONTAINER_APP: olle2
-
 on:
   workflow_dispatch:
 
@@ -70,7 +63,7 @@ jobs:
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.TERRAFORM_GITHUB_TOKEN }}
           # issue_number: context.issue.number,
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
