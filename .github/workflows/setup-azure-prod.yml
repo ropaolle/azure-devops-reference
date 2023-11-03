@@ -1,0 +1,38 @@
+name: Prod Azure Infrastructure
+
+# env:
+#   AZURE_CONTAINER_REGISTRY: RopaOlleRegistry
+#   PROJECT_NAME: devops # registry repository name
+#   REGISTRY_URL: ropaolleregistry.azurecr.io
+#   RESOURCE_GROUP: devops
+#   CONTAINER_APP: olle2
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  setup-infra-in-prod:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Az CLI login
+        uses: azure/login@v1
+        with:
+          # Login with OCID requires an App Registration and Managed Identity/Federated credentials
+          # App Registrations client id
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: list-files
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            ls -l

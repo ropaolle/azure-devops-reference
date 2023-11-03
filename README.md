@@ -5,11 +5,15 @@
 
 Basic ci/cd pipeline that builds, tests, and deploys a NextJS app to Azure as a Docker container. The motivation for this repository was to implement a workflow based on the latest release for a few tools and frameworks using current best practices.
 
-This project is hosted on [Microsoft Azure](https://azure.microsoft.com/) and uses [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) as a planning tool, [GitHub Actions](https://github.com/features/actions) to lint, test, build, and deploy a [NextJS](https://nextjs.org/) app in a [Docker](https://www.docker.com/) container.
+The project is hosted on [Microsoft Azure](https://azure.microsoft.com/) and uses [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) as a planning tool, [GitHub Actions](https://github.com/features/actions) to lint, test, build, and deploy a [NextJS](https://nextjs.org/) app in a [Docker](https://www.docker.com/) container.
 
 The workflow uses GitHub projects for planning. New functionality is created in a fresh feature branch. When the feature branch is pushed GitHub actions automatically run lint, tests and build our app. If that succeeds, we can merge the feature branch into the main branch. This will trigger a new action that builds a new Docker image and pushes it to our image registry in Azure. If that succeeds, we promote the image to our container app, spins up a fresh container and tear down the old container.
 
 [![Demo app](images/demo-app.png)](https://devops.ropaolle.se)
+
+<!-- ## Used tools and services
+
+- Cloudflare -->
 
 ## CI/CD Workflow
 
