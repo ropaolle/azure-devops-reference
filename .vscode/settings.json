@@ -1,0 +1,9 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#553955" // lila
+  },
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}
