@@ -33,4 +33,4 @@ A deploy is triggered by accepting a pull request against the main branch. This 
 
 ### 5. Monitor app
 
-When our app is up and running we can use various Azure monitor services to make sure it works as expected. A couple of services that comes to mind are Azure Monitor metrics, Application logging and Azure Monitor alerts.
+When the [app](https://devops.ropaolle.se) is up and running we can use various Azure monitor services to make sure it works as expected. A couple of services that comes to mind are Azure Monitor metrics, Application logging and Azure Monitor alerts.
