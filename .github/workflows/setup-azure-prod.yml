@@ -3,6 +3,8 @@
 name: Prod Azure Infrastructure
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -65,26 +67,16 @@ jobs:
           github-token: ${{ secrets.TERRAFORM_GITHUB_TOKEN }}
           script: |
             github.rest.issues.createComment({
-              issue_number: 1,
+              issue_number: 9,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '👋 Thanks for reporting!'
-            })      
-      
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: 1,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })      
+            })
 
       # - name: Terraform Plan Status
       #   if: steps.plan.outcome == 'failure'
       #   run: exit 1
- 
+
       # - name: Terraform Apply
       #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       #   run: terraform apply -auto-approve -input=false
