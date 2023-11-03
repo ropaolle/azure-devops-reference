@@ -34,3 +34,7 @@ A deploy is triggered by accepting a pull request against the main branch. This 
 ### 5. Monitor app
 
 When our app is up and running we can use various Azure monitor services to make sure it works as expected. A couple of services that comes to mind are Azure Monitor metrics, Application logging and Azure Monitor alerts.
+
+
+<iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials" />
+<iframe src="https://olle2.icyfield-8a51ed55.swedencentral.azurecontainerapps.io/" title="W3Schools Free Online Web Tutorials" />
