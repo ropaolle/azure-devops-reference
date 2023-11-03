@@ -1,7 +1,7 @@
 # Azure Devops Reference
 
-![Prod deploy status](https://github.com/ropaolle/devops-dev/actions/workflows/cd-azure-prod.yml/badge.svg)
-![Prod feature status](https://github.com/ropaolle/devops-dev/actions/workflows/ci-github-prod.yml/badge.svg)
+![Prod deploy status](https://github.com/ropaolle/azure-devops-reference/actions/workflows/cd-azure-prod.yml/badge.svg)
+![Prod feature status](https://github.com/ropaolle/azure-devops-reference/actions/workflows/ci-github-prod.yml/badge.svg)
 
 Basic ci/cd pipeline that builds, tests, and deploys a NextJS app to Azure as a Docker container. The motivation for this repository was to implement a workflow based on the latest release for a few tools and frameworks using current best practices.
 
