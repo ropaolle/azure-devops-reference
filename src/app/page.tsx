@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         <a href="https://github.com/ropaolle/devops-dev" target="_blank">
-          <div className="absolute right-0 top-0 w-64">
+          <div className="absolute right-0 top-0 w-48">
             <Logo />
           </div>
         </a>
