@@ -9,7 +9,7 @@ The pipeline is hosted on [Microsoft Azure](https://azure.microsoft.com/) and us
 
 The workflow uses GitHub projects for planning. New functionality is created in a fresh feature branch. When the feature branch is pushed GitHub actions automatically run lint, tests and build our app. If that succeeds, we can merge the feature branch into the main branch. This will trigger a new action that builds a new Docker image and pushes it to our image registry in Azure. If that succeeds, we promote the image to our container app, spins up a fresh container and tear down the old container.
 
-[![Demo app](images/demo-app.png)](https://)
+[![Demo app](images/demo-app.png)](https://devops.ropaolle.se)
 
 ## CI/CD Workflow
 
