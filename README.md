@@ -19,13 +19,6 @@ The planning is done with GitHub Projects.
 
 ![github-projects-board](images/github-projects-board.png)
 
-<!-- <details>
-  <summary>GitHub Projects Board</summary>
-
-![github-projects-board](images/github-projects-board.png)
-
-</details> -->
-
 ### 2. Code the new feature
 
 A new feature is added by checking out the main branch and create a new feature branch using the naming pattern `feature/my-awesome-new-feature`. After that it is up to you. Take it away and code your awesome feature.
@@ -41,7 +34,3 @@ A deploy is triggered by accepting a pull request against the main branch. This 
 ### 5. Monitor app
 
 When our app is up and running we can use various Azure monitor services to make sure it works as expected. A couple of services that comes to mind are Azure Monitor metrics, Application logging and Azure Monitor alerts.
-
-## Azure configuration
-
-?
