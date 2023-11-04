@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.7.0"
+      version = "=3.77.0"
     }
   }
 }
@@ -13,15 +13,15 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "terraform-backend" {
+resource "azurerm_resource_group" "terraform_backend" {
   name     = "terraform_backend"
   location = "swedencentral"
 }
 
-resource "azurerm_storage_account" "terraform-backend" {
+resource "azurerm_storage_account" "terraform_backend" {
   name                     = "ro71terraformbackend"
-  resource_group_name      = azurerm_resource_group.terraform-backend.name
-  location                 = azurerm_resource_group.terraform-backend.location
+  resource_group_name      = azurerm_resource_group.terraform_backend.name
+  location                 = azurerm_resource_group.terraform_backend.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
@@ -30,9 +30,9 @@ resource "azurerm_storage_account" "terraform-backend" {
   }
 }
 
-resource "azurerm_storage_container" "terraform-backend" {
+resource "azurerm_storage_container" "terraform_backend" {
   name                  = "vhds"
-  storage_account_name  = azurerm_storage_account.terraform-backend.name
+  storage_account_name  = azurerm_storage_account.terraform_backend.name
   container_access_type = "private"
 }
 

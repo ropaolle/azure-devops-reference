@@ -36,3 +36,5 @@ next-env.d.ts
 
 # Terraform
 .terraform
+terraform.tfstate
+terraform.tfstate.backup
