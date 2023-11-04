@@ -1,6 +1,5 @@
 # https://www.terraform-best-practices.com/naming
 
-# Azure Provider source and version being used
 terraform {
   required_providers {
     azurerm = {
@@ -30,6 +29,44 @@ resource "azurerm_resource_group" "azure_devops_ref" {
 
   tags = {
     environment = "dev"
+  }
+}
+
+resource "azurerm_container_registry" "azure_devops_ref" {
+  name                = "azuredevopsref"
+  resource_group_name = azurerm_resource_group.azure_devops_ref.name
+  location            = azurerm_resource_group.azure_devops_ref.location
+  sku                 = "Basic"
+  admin_enabled       = true
+}
+
+resource "azurerm_log_analytics_workspace" "azure_devops_ref" {
+  name                = "azuredevopsref"
+  location            = azurerm_resource_group.azure_devops_ref.location
+  resource_group_name = azurerm_resource_group.azure_devops_ref.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
+resource "azurerm_container_app_environment" "azure_devops_ref" {
+  name                       = "azuredevopsref"
+  location                   = azurerm_resource_group.azure_devops_ref.location
+  resource_group_name        = azurerm_resource_group.azure_devops_ref.name
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.azure_devops_ref.id
+}
+resource "azurerm_container_app" "azure_devops_ref" {
+  name                         = "azuredevopsref"
+  container_app_environment_id = azurerm_container_app_environment.azure_devops_ref.id
+  resource_group_name          = azurerm_resource_group.azure_devops_ref.name
+  revision_mode                = "Single"
+
+  template {
+    container {
+      name   = "examplecontainerapp"
+      image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+      cpu    = 0.25
+      memory = "0.5Gi"
+    }
   }
 }
 
