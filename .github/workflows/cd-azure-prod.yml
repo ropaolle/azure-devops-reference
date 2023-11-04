@@ -1,11 +1,11 @@
 name: Prod Azure CD
 
 env:
-  AZURE_CONTAINER_REGISTRY: RopaOlleRegistry
-  PROJECT_NAME: devops # registry repository name
-  REGISTRY_URL: ropaolleregistry.azurecr.io
-  RESOURCE_GROUP: devops
-  CONTAINER_APP: olle2
+  AZURE_CONTAINER_REGISTRY: azuredevopsref
+  PROJECT_NAME: evops-azure-reference # registry repository name
+  REGISTRY_URL: azuredevopsref.azurecr.io
+  RESOURCE_GROUP: azure_devops_ref
+  CONTAINER_APP: azuredevopsref
 
 on:
   pull_request:

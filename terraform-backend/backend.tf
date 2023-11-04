@@ -1,3 +1,7 @@
+# terraform import azurerm_resource_group.terraform_backend /subscriptions/e19611d3-62cd-4569-99b9-10ba8d0f4e79/resourceGroups/terraform_backend
+# terraform import azurerm_storage_account.terraform_backend /subscriptions/e19611d3-62cd-4569-99b9-10ba8d0f4e79/resourceGroups/terraform_backend/providers/Microsoft.Storage/storageAccounts/ro71terraformbackend
+# terraform import azurerm_storage_container.terraform_backend https://ro71terraformbackend.blob.core.windows.net/vhds
+
 terraform {
   required_providers {
     azurerm = {
