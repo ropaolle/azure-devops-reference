@@ -1,4 +1,5 @@
 # https://www.terraform-best-practices.com/naming
+# https://medium.com/@vivazmo/azure-container-apps-with-terraform-part-1-ae20649e0dff
 
 terraform {
   required_providers {
@@ -61,12 +62,18 @@ resource "azurerm_container_app" "azure_devops_ref" {
   resource_group_name          = azurerm_resource_group.azure_devops_ref.name
   revision_mode                = "Single"
 
+  # registry {
+  #   server               = "azuredevopsref.azurecr.io"
+  #   username             = "azuredevopsref"
+  #   password_secret_name = "?"
+  # }
+  
   template {
     container {
-      name  = "examplecontainerapp"
-      image = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
-      # name   = "devops-azure-reference"
-      # image  = "azuredevopsref.azurecr.io/devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
+      # name  = "examplecontainerapp"
+      # image = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+      name   = "devops-azure-reference"
+      image  = "devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
       cpu    = 0.25
       memory = "0.5Gi"
     }
