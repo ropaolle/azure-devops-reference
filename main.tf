@@ -54,6 +54,7 @@ resource "azurerm_container_app_environment" "azure_devops_ref" {
   resource_group_name        = azurerm_resource_group.azure_devops_ref.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.azure_devops_ref.id
 }
+
 resource "azurerm_container_app" "azure_devops_ref" {
   name                         = "azuredevopsref"
   container_app_environment_id = azurerm_container_app_environment.azure_devops_ref.id
@@ -66,6 +67,40 @@ resource "azurerm_container_app" "azure_devops_ref" {
       image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
       cpu    = 0.25
       memory = "0.5Gi"
+    }
+  }
+
+  ingress {
+    external_enabled = true
+    target_port      = 3000
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+}
+
+resource "azurerm_container_app" "azure_devops_ref2" {
+  name                         = "azuredevopsref2"
+  container_app_environment_id = azurerm_container_app_environment.azure_devops_ref.id
+  resource_group_name          = azurerm_resource_group.azure_devops_ref.name
+  revision_mode                = "Single"
+
+  template {
+    container {
+      name   = "devops-azure-reference"
+      image  = "azuredevopsref.azurecr.io/devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
+      cpu    = 0.25
+      memory = "0.5Gi"
+    }
+  }
+
+  ingress {
+    external_enabled = true
+    target_port      = 3000
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
     }
   }
 }

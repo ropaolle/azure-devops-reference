@@ -13,10 +13,7 @@ permissions:
 
 env:
   BRANCH_NAME: ${{ github.ref_name }}
-  # TODO: vilket client id ska användas? 
-  # Managed identity: aa9175ba-4091-4762-9c77-697669dc55cf
-  # App reg: e210ae55-878e-4657-b009-efa5f57c285f
-  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_CLIENT_ID: ${{ secrets.AZURE_MANAGED_IDENTITIE_CLIENT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   ARM_USE_OIDC: true
@@ -27,15 +24,6 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
-
-      # - name: Az CLI login
-      #   uses: azure/login@v1
-      #   with:
-      #     # Login with OCID requires an App Registration and Managed Identity/Federated credentials
-      #     # App Registrations client id
-      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
-      #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-      #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
