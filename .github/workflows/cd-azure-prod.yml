@@ -27,6 +27,7 @@ jobs:
         uses: azure/login@v1
         with:
           # Login with OCID requires an App Registration and Managed Identity/Federated credentials
+          # TODO: kräver denna app reg client id, får unathurized när jag försöker uppdatera appen
           client-id: ${{ secrets.AZURE_MANAGED_IDENTITIE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
