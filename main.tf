@@ -63,8 +63,10 @@ resource "azurerm_container_app" "azure_devops_ref" {
 
   template {
     container {
-      name   = "examplecontainerapp"
-      image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+      name  = "examplecontainerapp"
+      image = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+      # name   = "devops-azure-reference"
+      # image  = "azuredevopsref.azurecr.io/devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
       cpu    = 0.25
       memory = "0.5Gi"
     }
@@ -80,30 +82,30 @@ resource "azurerm_container_app" "azure_devops_ref" {
   }
 }
 
-resource "azurerm_container_app" "azure_devops_ref2" {
-  name                         = "azuredevopsref2"
-  container_app_environment_id = azurerm_container_app_environment.azure_devops_ref.id
-  resource_group_name          = azurerm_resource_group.azure_devops_ref.name
-  revision_mode                = "Single"
+# resource "azurerm_container_app" "azure_devops_ref2" {
+#   name                         = "azuredevopsref2"
+#   container_app_environment_id = azurerm_container_app_environment.azure_devops_ref.id
+#   resource_group_name          = azurerm_resource_group.azure_devops_ref.name
+#   revision_mode                = "Single"
 
-  template {
-    container {
-      name   = "devops-azure-reference"
-      image  = "azuredevopsref.azurecr.io/devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
-      cpu    = 0.25
-      memory = "0.5Gi"
-    }
-  }
+#   template {
+#     container {
+#       name   = "devops-azure-reference"
+#       image  = "azuredevopsref.azurecr.io/devops-azure-reference:f8e9bafb4fa5c253d390187ea0497b5406a74942"
+#       cpu    = 0.25
+#       memory = "0.5Gi"
+#     }
+#   }
 
-  ingress {
-    external_enabled = true
-    target_port      = 3000
-    traffic_weight {
-      latest_revision = true
-      percentage      = 100
-    }
-  }
-}
+#   ingress {
+#     external_enabled = true
+#     target_port      = 3000
+#     traffic_weight {
+#       latest_revision = true
+#       percentage      = 100
+#     }
+#   }
+# }
 
 #  Is this needed?
 # https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_federated_identity_credential
