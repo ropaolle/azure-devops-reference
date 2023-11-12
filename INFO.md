@@ -2,7 +2,6 @@
 
 ## Azure
 
-
 ```sh
 # login via cli
 az account subscription show --subscription-id "e19611d3-62cd-4569-99b9-10ba8d0f4e79"
